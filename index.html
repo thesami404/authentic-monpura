@@ -269,9 +269,9 @@
             margin-right: auto;
         }
 
-        /* --- (নতুন) কালেকশন/গ্যালারি সেকশন --- */
+        /* --- কালেকশন/গ্যালারি সেকশন --- */
         .collection-section {
-            background: var(--light-green); /* ব্যাকগ্রাউন্ড কালার পরিবর্তন */
+            background: var(--light-green);
             text-align: center;
         }
         
@@ -293,18 +293,17 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
-            height: 250px; /* ছবির নির্দিষ্ট উচ্চতা */
+            height: 250px;
             background: #fff;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* ছবি যেন বক্সের মধ্যে ঠিকঠাক ফিট হয় */
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        /* হোভার ইফেক্ট - জুম */
         .gallery-item:hover img {
             transform: scale(1.1);
         }
@@ -312,7 +311,7 @@
 
         /* --- অর্ডার ফর্ম সেকশন --- */
         .order-section {
-            background: var(--white); /* ব্যাকগ্রাউন্ড সাদা করা হলো */
+            background: var(--white);
             position: relative;
         }
 
@@ -355,7 +354,7 @@
         .order-form-container {
             flex: 1.2;
             padding: 60px;
-            background: var(--light-green); /* ফর্মের ব্যাকগ্রাউন্ড হালকা সবুজ */
+            background: var(--light-green);
         }
 
         .input-group { margin-bottom: 20px; }
@@ -401,7 +400,7 @@
         }
         .submit-btn:hover { background: #128C7E; }
 
-        /* --- ফুটার --- */
+        /* --- ফুটার (আপডেটেড ডিজাইন) --- */
         footer {
             background: var(--text-dark);
             color: rgba(255,255,255,0.8);
@@ -435,6 +434,80 @@
         .social-icon.fb:hover { color: #1877F2; }
         .social-icon.wa:hover { color: #25D366; }
 
+        /* ফুটার কন্টেন্ট ও ডেভেলপার ক্রেডিট ডিজাইন */
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .copyright-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
+        }
+
+        .developer-divider {
+            width: 50px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+            border-radius: 2px;
+        }
+
+        .developer-info {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s ease;
+        }
+
+        .developer-info:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .dev-name {
+            color: var(--accent-color);
+            font-weight: 700;
+            text-decoration: none;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .dev-name::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        .dev-name:hover::after {
+            width: 100%;
+        }
+
+        .heart-icon {
+            color: #e25555;
+            font-size: 0.8rem;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
 
         /* --- অ্যানিমেশন ক্লাস --- */
         .reveal {
@@ -465,10 +538,10 @@
             .nav-btn { display: none; }
             .logo { font-size: 1.5rem; }
             .card { padding: 30px 20px; }
-            .gallery-grid { grid-template-columns: 1fr; } /* মোবাইলে এক কলাম */
+            .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
-    </head>
+</head>
 <body>
 
     <nav class="navbar">
@@ -606,7 +679,17 @@
                 </a>
             </div>
 
-            <p>© ২০২৬ অথেন্টিক মনপুরা | প্রাকৃতিক ও বিশুদ্ধ</p>
+            <div class="footer-content">
+                <p class="copyright-text">© ২০২৬ অথেন্টিক মনপুরা | প্রাকৃতিক ও বিশুদ্ধ</p>
+                
+                <div class="developer-divider"></div>
+
+                <div class="developer-info">
+                    <span>কারিগরি সহযোগিতায়</span>
+                    <i class="fas fa-heart heart-icon"></i>
+                    <a href="#" class="dev-name">সামি</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -637,7 +720,7 @@
         document.getElementById('whatsappOrderForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
 
-            // এখানে আপনার নাম্বারটি সঠিকভাবে ফরম্যাট করা হয়েছে (স্পেস ও + ছাড়া)
+            // এখানে আপনার নাম্বারটি সঠিকভাবে ফরম্যাট করা হয়েছে (স্পেস ও + ছাড়া)
             const myNumber = "8801857551235"; 
 
             const name = document.getElementById('customerName').value;
@@ -656,8 +739,5 @@
             window.open(url, '_blank');
         });
     </script>
-    </body>
+</body>
 </html>
-
-
-
